@@ -68,7 +68,7 @@ seed();
 /* ---------- Nav rendering (runs on every page) ---------- */
 function renderNav() {
   const session = getSession();
-  const signLink = document.querySelector('a[href="sign.html"]');
+  const signLink = document.querySelector('a[href="pages/sign.html"]');
   if (!signLink) return;
 
   if (session) {
@@ -87,7 +87,7 @@ function renderNav() {
 
     if (session.role === "admin") {
       const dashLink = document.createElement("a");
-      dashLink.href = "dashboard.html";
+      dashLink.href = "pages/dashboard.html";
       dashLink.textContent = "Dashboard";
       signLink.parentElement.insertBefore(dashLink, signLink);
     }
@@ -209,7 +209,7 @@ function initAuthForms() {
       msg.className = "form-msg success";
       setTimeout(() => {
         window.location.href =
-          match.role === "admin" ? "dashboard.html" : "index.html";
+          match.role === "admin" ? "pages/dashboard.html" : "index.html";
       }, 600);
     });
   }
@@ -266,7 +266,7 @@ function initAuthForms() {
       msg.className = "form-msg success";
       setTimeout(() => {
         window.location.href =
-          currentRole === "admin" ? "dashboard.html" : "index.html";
+          currentRole === "admin" ? "pages/dashboard.html" : "index.html";
       }, 600);
     });
   }
@@ -814,22 +814,22 @@ document.addEventListener("DOMContentLoaded", () => {
   renderLinkCards(
     "timetable-links-public",
     getData(DB_KEYS.filieres),
-    (n) => `timetable.html?program=${encodeURIComponent(n)}`,
+    (n) => `pages/timetable.html?program=${encodeURIComponent(n)}`,
   );
   renderLinkCards(
     "exam-links-public",
     getData(DB_KEYS.filieres),
-    (n) => `exam.html?program=${encodeURIComponent(n)}`,
+    (n) => `pages/exam.html?program=${encodeURIComponent(n)}`,
   );
   renderLinkCards(
     "clubs-links-public",
     getData(DB_KEYS.clubs),
-    (n) => `clubs.html?club=${encodeURIComponent(n)}`,
+    (n) => `pages/clubs.html?club=${encodeURIComponent(n)}`,
   );
   renderLinkCards(
     "activities-links-public",
     getData(DB_KEYS.activityTypes),
-    (n) => `activities.html?type=${encodeURIComponent(n)}`,
+    (n) => `pages/activities.html?type=${encodeURIComponent(n)}`,
   );
 
   initSingleTabPage({
