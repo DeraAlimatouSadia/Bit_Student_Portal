@@ -68,8 +68,8 @@ seed();
 /* ---------- Nav rendering (runs on every page) ---------- */
 function renderNav() {
   const session = getSession();
-  const signLink = document.querySelector('a[href="pages/sign.html"]');
-  if (!signLink) return;
+const signLink = document.querySelector(`a[href="${P}sign.html"]`);
+   if (!signLink) return;
 
   if (session) {
     signLink.textContent = "Sign out";
@@ -77,7 +77,7 @@ function renderNav() {
     signLink.addEventListener("click", (e) => {
       e.preventDefault();
       clearSession();
-      window.location.href = "index.html";
+      window.location.href = R + "index.html";
     });
 
     const chip = document.createElement("span");
@@ -87,7 +87,7 @@ function renderNav() {
 
     if (session.role === "admin") {
       const dashLink = document.createElement("a");
-      dashLink.href = "pages/dashboard.html";
+      dashLink.href = P + "dashboard.html";
       dashLink.textContent = "Dashboard";
       signLink.parentElement.insertBefore(dashLink, signLink);
     }
@@ -209,7 +209,7 @@ function initAuthForms() {
       msg.className = "form-msg success";
       setTimeout(() => {
         window.location.href =
-          match.role === "admin" ? "pages/dashboard.html" : "index.html";
+          match.role === "admin" ? P + "dashboard.html" : R + "index.html";
       }, 600);
     });
   }
@@ -266,7 +266,7 @@ function initAuthForms() {
       msg.className = "form-msg success";
       setTimeout(() => {
         window.location.href =
-          currentRole === "admin" ? "pages/dashboard.html" : "index.html";
+          currentRole === "admin" ? P + "dashboard.html" : R + "index.html";
       }, 600);
     });
   }
