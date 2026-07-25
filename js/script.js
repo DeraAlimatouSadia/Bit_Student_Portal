@@ -15,7 +15,10 @@ const DB_KEYS = {
   timetable: "bit_timetable",
   exams: "bit_exams",
 };
-
+/* ---------- Path helpers ---------- */
+const IS_IN_PAGES = window.location.pathname.includes("/pages/");
+const P = IS_IN_PAGES ? "" : "pages/";   // prefix pour aller dans pages/
+const R = IS_IN_PAGES ? "../" : "";      // prefix pour remonter à la racine
 /* ---------- Generic helpers ---------- */
 function getData(key) {
   return JSON.parse(localStorage.getItem(key) || "[]");
