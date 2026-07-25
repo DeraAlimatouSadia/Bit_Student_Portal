@@ -15,10 +15,7 @@ const DB_KEYS = {
   timetable: "bit_timetable",
   exams: "bit_exams",
 };
-/* ---------- Path helpers ---------- */
-const IS_IN_PAGES = window.location.pathname.includes("/pages/");
-const P = IS_IN_PAGES ? "" : "pages/";   // prefix pour aller dans pages/
-const R = IS_IN_PAGES ? "../" : "";      // prefix pour remonter à la racine
+
 /* ---------- Generic helpers ---------- */
 function getData(key) {
   return JSON.parse(localStorage.getItem(key) || "[]");
@@ -71,7 +68,7 @@ seed();
 /* ---------- Nav rendering (runs on every page) ---------- */
 function renderNav() {
   const session = getSession();
-const signLink = document.querySelector(`a[href="${P}sign.html"]`);
+const signLink = document.querySelector(`a[href="pages/sign.html"]`);
    if (!signLink) return;
 
   if (session) {
@@ -80,7 +77,7 @@ const signLink = document.querySelector(`a[href="${P}sign.html"]`);
     signLink.addEventListener("click", (e) => {
       e.preventDefault();
       clearSession();
-      window.location.href = R + "index.html";
+      window.location.href ="../index.html";
     });
 
     const chip = document.createElement("span");
@@ -90,7 +87,7 @@ const signLink = document.querySelector(`a[href="${P}sign.html"]`);
 
     if (session.role === "admin") {
       const dashLink = document.createElement("a");
-      dashLink.href = P + "dashboard.html";
+      dashLink.href ="pages/dashboard.html";
       dashLink.textContent = "Dashboard";
       signLink.parentElement.insertBefore(dashLink, signLink);
     }
@@ -212,7 +209,7 @@ function initAuthForms() {
       msg.className = "form-msg success";
       setTimeout(() => {
         window.location.href =
-          match.role === "admin" ? P + "dashboard.html" : R + "index.html";
+          match.role === "admin" ? "pages/dashboard.html" : "pages/index.html";
       }, 600);
     });
   }
@@ -269,7 +266,7 @@ function initAuthForms() {
       msg.className = "form-msg success";
       setTimeout(() => {
         window.location.href =
-          currentRole === "admin" ? P + "dashboard.html" : R + "index.html";
+          currentRole === "admin" ? "pages/dashboard.html" : "../index.html";
       }, 600);
     });
   }
