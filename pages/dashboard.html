@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin dashboard — BIT</title>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+  <nav>
+    <a href="index.html" class="logo"><img src="../images/bit.png" alt="BIT logo">Burkina Institute of Technology</a>
+    <button class="nav-toggle" aria-label="Toggle menu">☰</button>
+    <div class="nav-links">
+      <a href="../index.html">Home</a>
+      <a href="sign.html">Sign in</a>
+      <a href="timetable.html">Timetables</a>
+      <a href="exam.html">Exam</a>
+      <a href="clubs.html">Clubs</a>
+      <a href="activities.html">Activities</a>
+    </div>
+  </nav>
+
+  <div id="dash-guard" class="auth-wrap" style="display:none;">
+    <div class="auth-card">
+      <h3 style="margin-bottom:1.2rem; text-align:center;">Admin sign in</h3>
+      <form id="login-form" class="form-panel active">
+        <div class="field">
+          <label for="login-email">Email</label>
+          <input id="login-email" type="email" required placeholder="admin@bit.bf">
+        </div>
+        <div class="field">
+          <label for="login-password">Password</label>
+          <input id="login-password" type="password" required placeholder="••••••••">
+        </div>
+        <div class="form-msg" id="login-msg"></div>
+        <button class="btn btn-gold" type="submit">Sign in</button>
+      </form>
+      <p style="text-align:center; font-size:0.85rem; margin-top:1.2rem; color:var(--ink-soft);">
+        New admin? <a href="sign.html?role=admin&tab=register" style="color:var(--red); font-weight:600;">Create an account</a>
+      </p>
+    </div>
+  </div>
+
+  <div id="dash-content" class="page-section" style="display:none;">
+    <div class="section-head">
+      <div>
+        <span class="eyebrow">Admin</span>
+        <h2>Dashboard</h2>
+      </div>
+      <button class="btn btn-outline" id="export-data-btn" type="button">Export data (.csv)</button>
+    </div>
+
+    <div class="dash-grid" style="margin-bottom: 3rem;">
+      <div class="dash-card">
+        <h3>Post a news item</h3>
+        <form id="news-form">
+          <div class="field">
+            <label for="news-title">Title</label>
+            <input id="news-title" type="text" required placeholder="e.g. Library extends opening hours">
+          </div>
+          <div class="field">
+            <label for="news-content">Content</label>
+            <textarea id="news-content" required placeholder="Write the news content..."></textarea>
+          </div>
+          <button class="btn btn-gold" type="submit">Publish news</button>
+        </form>
+      </div>
+      <div>
+        <h3>Published news</h3>
+        <div class="dash-list" id="news-list"></div>
+      </div>
+    </div>
+
+    <div class="dash-grid" style="margin-bottom: 3rem;">
+      <div class="dash-card">
+        <h3>Add an activity</h3>
+        <form id="activity-form">
+          <div class="field">
+            <label for="activity-title">Title</label>
+            <input id="activity-title" type="text" required placeholder="e.g. Robotics Workshop">
+          </div>
+          <div class="field">
+            <label for="activity-type">Type</label>
+            <select id="activity-type" required></select>
+          </div>
+          <div class="field">
+            <label for="activity-date">Date</label>
+            <input id="activity-date" type="date" required>
+          </div>
+          <div class="field">
+            <label for="activity-location">Location</label>
+            <input id="activity-location" type="text" required placeholder="e.g. Amphi B">
+          </div>
+          <div class="field">
+            <label for="activity-description">Description</label>
+            <textarea id="activity-description" required placeholder="Short description..."></textarea>
+          </div>
+          <button class="btn btn-gold" type="submit">Add activity</button>
+        </form>
+      </div>
+      <div>
+        <h3>Upcoming activities</h3>
+        <div class="dash-list" id="activity-list"></div>
+      </div>
+    </div>
+
+    <div class="dash-grid" style="margin-bottom: 3rem;">
+      <div class="dash-card">
+        <h3>Add a timetable session</h3>
+        <form id="timetable-form">
+          <div class="field">
+            <label for="tt-filiere">Filière</label>
+            <select id="tt-filiere" required></select>
+          </div>
+          <div class="field">
+            <label for="tt-annee">Year</label>
+            <select id="tt-annee" required></select>
+          </div>
+          <div class="field">
+            <label for="tt-course">Course</label>
+            <input id="tt-course" type="text" required placeholder="e.g. Data Structures">
+          </div>
+          <div class="field">
+            <label for="tt-day">Day</label>
+            <select id="tt-day" required></select>
+          </div>
+          <div class="field">
+            <label for="tt-start">Start time</label>
+            <input id="tt-start" type="time" required>
+          </div>
+          <div class="field">
+            <label for="tt-end">End time</label>
+            <input id="tt-end" type="time" required>
+          </div>
+          <div class="field">
+            <label for="tt-room">Room</label>
+            <input id="tt-room" type="text" required placeholder="e.g. Room 204">
+          </div>
+          <button class="btn btn-gold" type="submit">Add session</button>
+        </form>
+      </div>
+      <div>
+        <h3>Timetable sessions</h3>
+        <div class="dash-list" id="timetable-list"></div>
+      </div>
+    </div>
+
+    <div class="dash-grid" style="margin-bottom: 3rem;">
+      <div class="dash-card">
+        <h3>Add an exam</h3>
+        <form id="exam-form">
+          <div class="field">
+            <label for="exam-filiere">Filière</label>
+            <select id="exam-filiere" required></select>
+          </div>
+          <div class="field">
+            <label for="exam-annee">Year</label>
+            <select id="exam-annee" required></select>
+          </div>
+          <div class="field">
+            <label for="exam-course">Course</label>
+            <input id="exam-course" type="text" required placeholder="e.g. Data Structures">
+          </div>
+          <div class="field">
+            <label for="exam-date">Date</label>
+            <input id="exam-date" type="date" required>
+          </div>
+          <div class="field">
+            <label for="exam-time">Time (optional)</label>
+            <input id="exam-time" type="time">
+          </div>
+          <div class="field">
+            <label for="exam-room">Room (optional)</label>
+            <input id="exam-room" type="text" placeholder="e.g. Room 204">
+          </div>
+          <div class="field">
+            <label for="exam-notes">Notes (optional)</label>
+            <textarea id="exam-notes" placeholder="What it covers, materials allowed..."></textarea>
+          </div>
+          <button class="btn btn-gold" type="submit">Add exam</button>
+        </form>
+      </div>
+      <div>
+        <h3>Scheduled exams</h3>
+        <div class="dash-list" id="exam-list"></div>
+      </div>
+    </div>
+
+    <div class="dash-grid" style="margin-bottom: 3rem;">
+      <div class="dash-card">
+        <h3>Post a weekly club update</h3>
+        <form id="club-form">
+          <div class="field">
+            <label for="club-select">Club</label>
+            <select id="club-select" required></select>
+          </div>
+          <div class="field">
+            <label for="club-update">This week's update</label>
+            <textarea id="club-update" required placeholder="e.g. Meeting Friday 5pm, room C3."></textarea>
+          </div>
+          <div class="form-msg" id="club-msg"></div>
+          <button class="btn btn-gold" type="submit">Save update</button>
+        </form>
+      </div>
+    </div>
+
+    <div class="section-head" style="margin-top: 1rem;">
+      <div>
+        <span class="eyebrow">Configuration</span>
+        <h2>Manage site options</h2>
+      </div>
+    </div>
+
+    <div class="dash-grid" style="margin-bottom: 3rem;">
+      <div class="dash-card">
+        <h3>Add a filière</h3>
+        <form id="filiere-form">
+          <div class="field">
+            <label for="filiere-name">Name</label>
+            <input id="filiere-name" type="text" required placeholder="e.g. Master Artificial Intelligence">
+          </div>
+          <div class="field">
+            <label for="filiere-years">Number of years</label>
+            <input id="filiere-years" type="number" min="1" max="10" required placeholder="e.g. 2">
+          </div>
+          <button class="btn btn-gold" type="submit">Add filière</button>
+        </form>
+      </div>
+      <div>
+        <h3>Existing filières</h3>
+        <div class="dash-list" id="filiere-list"></div>
+      </div>
+    </div>
+
+    <div class="dash-grid" style="margin-bottom: 3rem;">
+      <div class="dash-card">
+        <h3>Add a club</h3>
+        <form id="club-mgmt-form">
+          <div class="field">
+            <label for="club-mgmt-name">Name</label>
+            <input id="club-mgmt-name" type="text" required placeholder="e.g. Photography Club">
+          </div>
+          <div class="field">
+            <label for="club-mgmt-description">Description</label>
+            <textarea id="club-mgmt-description" required placeholder="What the club is about..."></textarea>
+          </div>
+          <button class="btn btn-gold" type="submit">Add club</button>
+        </form>
+      </div>
+      <div>
+        <h3>Existing clubs</h3>
+        <div class="dash-list" id="club-mgmt-list"></div>
+      </div>
+    </div>
+
+    <div class="dash-grid">
+      <div class="dash-card">
+        <h3>Add an activity type</h3>
+        <form id="activity-type-form">
+          <div class="field">
+            <label for="activity-type-name">Name</label>
+            <input id="activity-type-name" type="text" required placeholder="e.g. Company visit">
+          </div>
+          <div class="field">
+            <label for="activity-type-description">Description</label>
+            <textarea id="activity-type-description" required placeholder="What this type of activity is about..."></textarea>
+          </div>
+          <button class="btn btn-gold" type="submit">Add activity type</button>
+        </form>
+      </div>
+      <div>
+        <h3>Existing activity types</h3>
+        <div class="dash-list" id="activity-type-list"></div>
+      </div>
+    </div>
+
+  </div>
+
+  <footer>
+    Burkina Institute of Technology — Student Portal · Built by students, for students.
+  </footer>
+
+  <script src="../js/database.js"></script>
+   <script src="../js/script.js"></script>
+</body>
+</html>
