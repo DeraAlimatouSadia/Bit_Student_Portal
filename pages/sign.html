@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign in — BIT</title>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+  <nav>
+    <a href="../index.html" class="logo"><img src="../images/bit.png" alt="BIT logo">Burkina Institute of Technology</a>
+    <button class="nav-toggle" aria-label="Toggle menu">☰</button>
+    <div class="nav-links">
+      <a href="../index.html">Home</a>
+      <a href="sign.html" id="nav-auth-link" class="active">Sign in</a>
+      <a href="timetable.html">Timetables</a>
+      <a href="exam.html">Exams</a>
+      <a href="clubs.html">Clubs</a>
+      <a href="activities.html">Activities</a>
+    </div>
+  </nav>
+
+  <div class="auth-wrap">
+    <div class="auth-card">
+
+      <div class="tab-group" id="role-toggle">
+        <button type="button" class="tab-btn active" data-role="student">I'm a student</button>
+        <button type="button" class="tab-btn" data-role="admin">I'm an admin</button>
+      </div>
+
+      <div class="auth-tabs">
+        <button type="button" id="tab-login" class="active">Sign in</button>
+        <button type="button" id="tab-register">Create account</button>
+      </div>
+
+      <form id="login-form" class="form-panel active">
+        <div class="field">
+          <label for="login-email">Email</label>
+          <input id="login-email" type="email" required placeholder="you@example.com">
+        </div>
+        <div class="field">
+          <label for="login-password">Password</label>
+          <input id="login-password" type="password" required placeholder="••••••••">
+        </div>
+        <div class="form-msg" id="login-msg"></div>
+        <button class="btn btn-gold" type="submit">Sign in</button>
+      </form>
+
+      <form id="register-form" class="form-panel">
+        <div class="field">
+          <label for="reg-firstname">First name</label>
+          <input id="reg-firstname" type="text" required placeholder="Aïcha">
+        </div>
+        <div class="field">
+          <label for="reg-lastname">Last name</label>
+          <input id="reg-lastname" type="text" required placeholder="Ouédraogo">
+        </div>
+
+        <div id="student-only-fields" style="display:flex; flex-direction:column; gap:0.9rem;">
+          <div class="field">
+            <label for="reg-studentid">Student ID</label>
+            <input id="reg-studentid" type="text" required placeholder="e.g. BIT2026-045">
+          </div>
+          <div class="field">
+            <label for="reg-filiere">Filière</label>
+            <select id="reg-filiere" required></select>
+          </div>
+          <div class="field">
+            <label for="reg-annee">Year</label>
+            <select id="reg-annee" required></select>
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="reg-email">Email</label>
+          <input id="reg-email" type="email" required placeholder="you@example.com">
+        </div>
+        <div class="field">
+          <label for="reg-whatsapp">WhatsApp number</label>
+          <input id="reg-whatsapp" type="tel" required placeholder="+226 70 00 00 00">
+        </div>
+        <div class="field">
+          <label for="reg-password">Password</label>
+          <input id="reg-password" type="password" required minlength="4" placeholder="At least 4 characters">
+        </div>
+        <div class="form-msg" id="register-msg"></div>
+        <button class="btn btn-gold" type="submit">Create account</button>
+      </form>
+
+    </div>
+  </div>
+
+  <footer>
+    Burkina Institute of Technology — Student Portal · Built by students, for students.
+  </footer>
+
+  <script src="../js/database.js"></script>
+   <script src="../js/script.js"></script>
+</body>
+</html>

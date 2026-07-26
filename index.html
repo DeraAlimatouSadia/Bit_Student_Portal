@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Burkina Institute of Technology</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <nav>
+    <a href="index.html" class="logo"><img src="images/bit.png" alt="BIT logo">Burkina Institute of Technology</a>
+    <button class="nav-toggle" aria-label="Toggle menu">☰</button>
+    <div class="nav-links">
+      <a href="index.html" class="active">Home</a>
+      <a href="pages/sign.html" id="nav-auth-link">Sign in</a>
+      <a href="pages/timetable.html">Timetables</a>
+      <a href="pages/exam.html">Exams</a>
+      <a href="pages/clubs.html">Clubs</a>
+      <a href="pages/activities.html">Activities</a>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <div class="hero-content">
+      <h1>Everything happening on campus, in one place.</h1>
+      <p>News, club updates, timetables and activities for every student at BIT — posted by the administration, visible to everyone.</p>
+      <p>Stay tuned</p>
+    </div>
+  </header>
+
+  <main>
+
+    <section id="news">
+      <div class="section-head">
+        <div>
+          <span class="eyebrow">Campus</span>
+          <h2>News</h2>
+        </div>
+        <a href="pages/news.html" class="btn btn-outline">View all</a>
+      </div>
+      <div class="grid" id="news-list-public"></div>
+    </section>
+
+    <section id="timetable">
+      <div class="section-head">
+        <div>
+          <span class="eyebrow">Academics</span>
+          <h2>Timetables</h2>
+        </div>
+        <a href="pages/timetable.html" class="btn btn-outline">View all</a>
+      </div>
+      <div class="grid" id="timetable-links-public"></div>
+    </section>
+
+
+    <section id="exam">
+      <div class="section-head">
+        <div>
+          <span class="eyebrow">Academics</span>
+          <h2>Exams</h2>
+        </div>
+        <a href="pages/exam.html" class="btn btn-outline">View all</a>
+      </div>
+      <div class="grid" id="exam-links-public"></div>
+    </section>
+
+    <section id="clubs">
+      <div class="section-head">
+        <div>
+          <span class="eyebrow">Community</span>
+          <h2>Clubs</h2>
+        </div>
+        <a href="pages/clubs.html" class="btn btn-outline">View all</a>
+      </div>
+      <div class="grid" id="clubs-links-public"></div>
+    </section>
+
+    <section id="activities">
+      <div class="section-head">
+        <div>
+          <span class="eyebrow">What's on</span>
+          <h2>Activities</h2>
+        </div>
+        <a href="pages/activities.html" class="btn btn-outline">View all</a>
+      </div>
+      <div class="grid" id="activities-links-public"></div>
+    </section>
+
+  </main>
+
+  <footer>
+    <p>The administration doors are open from Monday to Friday, from 8:00 AM to 12:00 PM and from 2:00 PM to 6:00 PM</p>
+    Burkina Institute of Technology — Student Portal · Built by students, for students.
+  </footer>
+
+  <script src="js/database.js"></script>
+   <script src="js/script.js"></script>
+</body>
+</html>
