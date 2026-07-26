@@ -68,8 +68,15 @@ seed();
 /* ---------- Nav rendering (runs on every page) ---------- */
 function renderNav() {
   const session = getSession();
-const signLink = document.querySelector(`a[href="pages/sign.html"]`);
-   if (!signLink) return;
+  // true when the current page lives inside /pages/ (every page except index.html)
+  const inPages = /\/pages\/[^/]*$/.test(window.location.pathname);
+  const homeHref = inPages ? "../index.html" : "index.html";
+  const dashHref = inPages ? "dashboard.html" : "pages/dashboard.html";
+
+  // Selecting by id (not by href) so this works the same on index.html
+  // (href="pages/sign.html") and on every page inside /pages/ (href="sign.html").
+  const signLink = document.getElementById("nav-auth-link");
+  if (!signLink) return;
 
   if (session) {
     signLink.textContent = "Sign out";
@@ -77,7 +84,7 @@ const signLink = document.querySelector(`a[href="pages/sign.html"]`);
     signLink.addEventListener("click", (e) => {
       e.preventDefault();
       clearSession();
-      window.location.href ="../index.html";
+      window.location.href = homeHref;
     });
 
     const chip = document.createElement("span");
@@ -87,7 +94,7 @@ const signLink = document.querySelector(`a[href="pages/sign.html"]`);
 
     if (session.role === "admin") {
       const dashLink = document.createElement("a");
-      dashLink.href ="pages/dashboard.html";
+      dashLink.href = dashHref;
       dashLink.textContent = "Dashboard";
       signLink.parentElement.insertBefore(dashLink, signLink);
     }
@@ -209,7 +216,7 @@ function initAuthForms() {
       msg.className = "form-msg success";
       setTimeout(() => {
         window.location.href =
-          match.role === "admin" ? "pages/dashboard.html" : "pages/index.html";
+          match.role === "admin" ? "dashboard.html" : "../index.html";
       }, 600);
     });
   }
@@ -266,7 +273,7 @@ function initAuthForms() {
       msg.className = "form-msg success";
       setTimeout(() => {
         window.location.href =
-          currentRole === "admin" ? "pages/dashboard.html" : "../index.html";
+          currentRole === "admin" ? "dashboard.html" : "../index.html";
       }, 600);
     });
   }
