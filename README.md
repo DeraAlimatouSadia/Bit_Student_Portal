@@ -68,6 +68,7 @@ Group_19/
 - Password: `admin123`
 
 Anyone can create a new admin account from the sign in page too, all admins share the same dashboard.
+Two accounts can't use the same e-mail
 
 ## Default data
 
