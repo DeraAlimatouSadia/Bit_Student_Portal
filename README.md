@@ -85,3 +85,7 @@ rest of the code.
 - Better responsive design on some pages
 - Password hashing (right now it's plain text)
 - Students restriction from accessing class's informations other than theirs
+- Add an profile management tab for account (students/admins) account management
+- Add a tab for courses so admins can upload course on the website for students to access and dowload them from there anytime
+- Add features like comments/likes/reactions to make a peusdo social network and collect students thoughts about clubs activities and so on
+- Add languages features so everyone can use the language they are more comfortable with
